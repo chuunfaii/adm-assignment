@@ -1,5 +1,5 @@
-Select S.id Staff_ID,S.name Staff_Name,count(A.id)Total_Count
-From Staffs S, Appointments A
-Where S.id = A.staffId
-Group By S.id,S.name
-Order by Total_Count desc;
+SELECT S.id Staff_ID,S.name Staff_Name,count(A.id)Total_Count
+FROM Staffs S, Appointments A
+WHERE S.id = A.staffId
+GROUP BY S.id,S.name
+ORDER BY Total_Count DESC;
