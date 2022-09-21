@@ -17,6 +17,7 @@ CREATE TABLE Customers (
     name VARCHAR(50) NOT NULL,
     phoneNo VARCHAR(11) NOT NULL,
     email VARCHAR(50) NOT NULL,
+    area VARCHAR(50) NOT NULL,
     PRIMARY KEY (ic)
 );
 
@@ -90,7 +91,6 @@ CREATE TABLE Invoices (
 CREATE TABLE Treatments (
     id NUMBER NOT NULL,
     name VARCHAR(50) NOT NULL,
-    cost NUMBER(10, 2) NOT NULL,
     price NUMBER(10, 2) NOT NULL,
     description VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
