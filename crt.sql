@@ -30,7 +30,6 @@ CREATE TABLE Pets (
     breed VARCHAR(50) NOT NULL,
     color VARCHAR(50) NOT NULL,
     type VARCHAR(50) NOT NULL,
-    description VARCHAR(100) NOT NULL,
     ownerIc VARCHAR(12) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (ownerIc) REFERENCES Customers (ic)
