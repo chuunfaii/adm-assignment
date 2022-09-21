@@ -1,6 +1,9 @@
 -- Drop all tables
 DROP TABLE TreatmentInvoice;
 DROP TABLE Treatments;
+DROP TABLE MedicationInvoice;
+DROP TABLE Medications;
+DROP TABLE Suppliers;
 DROP TABLE Invoices;
 DROP TABLE Appointments;
 DROP TABLE Pets;
@@ -46,7 +49,7 @@ CREATE TABLE Staffs (
     name VARCHAR(50) NOT NULL,
     age NUMBER(3) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    phoneNo VARCHAR(50) NOT NULL,
+    phoneNo VARCHAR(11) NOT NULL,
     role VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -65,10 +68,19 @@ CREATE TABLE Appointments (
     FOREIGN KEY (staffId) REFERENCES Staffs (id)
 );
 
+-- Suppliers Table
+CREATE TABLE Suppliers (
+    id NUMBER NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    phoneNo VARCHAR(11) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
 -- Invoices Table
 CREATE TABLE Invoices (
     appointmentId NUMBER NOT NULL,
-    totalPrice NUMBER(10,2) NOT NULL,
+    totalPrice NUMBER(10, 2) NOT NULL,
     paidDateTime DATE NOT NULL,
     PRIMARY KEY (appointmentId),
     FOREIGN KEY (appointmentId) REFERENCES Appointments (id)
@@ -78,8 +90,8 @@ CREATE TABLE Invoices (
 CREATE TABLE Treatments (
     id NUMBER NOT NULL,
     name VARCHAR(50) NOT NULL,
-    cost NUMBER(10,2) NOT NULL,
-    price NUMBER(10,2) NOT NULL,
+    cost NUMBER(10, 2) NOT NULL,
+    price NUMBER(10, 2) NOT NULL,
     description VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -91,4 +103,26 @@ CREATE TABLE TreatmentInvoice (
     PRIMARY KEY (invoiceId, treatmentId),
     FOREIGN KEY (invoiceId) REFERENCES Invoices (appointmentId),
     FOREIGN KEY (treatmentId) REFERENCES Treatments (id)
+);
+
+-- Medications Table
+CREATE TABLE Medications (
+    supplierId NUMBER NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    stockQuantity NUMBER NOT NULL,
+    MSRP NUMBER(10, 2) NOT NULL,
+    price NUMBER(10, 2) NOT NULL,
+    PRIMARY KEY (supplierId),
+    FOREIGN KEY (supplierId) REFERENCES Suppliers (id)
+);
+
+-- MedicationInvoice Table
+CREATE TABLE MedicationInvoice (
+    invoiceId NUMBER NOT NULL,
+    medicationId NUMBER NOT NULL,
+    quantity NUMBER NOT NULL,
+    PRIMARY KEY (invoiceId, medicationId),
+    FOREIGN KEY (invoiceId) REFERENCES Invoices (appointmentId),
+    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
 );
