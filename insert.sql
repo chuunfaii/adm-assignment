@@ -95,26 +95,26 @@ insert into Rooms (id, location, status) values ('B104', 'Second Floor', 'Availa
 insert into Rooms (id, location, status) values ('B105', 'Second Floor', 'Available');
 
 -- Insert statements for Staffs table (20)
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (1, 'Briana Thomason', 33, 'bthomason0@gmail.com', '01151125639', 'Veterinarian',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (2, 'Horacio Cosson', 34, 'hcosson1@gmail.com', '01956173275', 'Vet Technician',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (3, 'Bryna Phelipeau', 36, 'bphelipeau2@gmail.com', '01020104351', 'Veterinarian',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (4, 'Mead Spare', 21, 'mspare3@gmail.com', '01303938306', 'Care Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (5, 'Wolfy Bastian', 59, 'wbastian4@gmail.com', '01235091032', 'Vet Technician',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (6, 'Thorndike Gillingwater', 30, 'tgillingwater5@gmail.com', '01178967515', 'Vet Technician',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (7, 'Paule Hindrich', 23, 'phindrich6@gmail.com', '01198673233', 'Vet Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (8, 'Hulda Slamaker', 24, 'hslamaker7@gmail.com', '01397484928', 'Vet Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (9, 'Margaretta Woodsford', 24, 'mwoodsford8@gmail.com', '01090600898', 'Veterinarian',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (10, 'Foster Zimek', 55, 'fzimek9@gmail.com', '01884277922', 'Veterinarian',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (11, 'Robina Steenson', 39, 'rsteensona@gmail.com', '01968345080', 'Vet Technician',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (12, 'Sallie Showalter', 24, 'sshowalterb@gmail.com', '01177940143', 'Vet Technician',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (13, 'Arv Lemmon', 56, 'alemmonc@gmail.com', '01025917511', 'Care Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (14, 'Thornton Schapero', 21, 'tschaperod@gmail.com', '01864408741', 'Care Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (15, 'Humphrey Scotland', 59, 'hscotlande@gmail.com', '01548017296', 'Veterinarian',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (16, 'Forster Beckingham', 46, 'fbeckinghamf@gmail.com', '01553603684', 'Vet Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (17, 'Daune McTurley', 60, 'dmcturleyg@gmail.com', '01036850467', 'Vet Technician',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (18, 'Wilmette Clemmow', 51, 'wclemmowh@gmail.com', '01809028739', 'Vet Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (19, 'Tawnya Baynom', 28, 'tbaynomi@gmail.com', '01401202809', 'Vet Assistant',0);
-insert into Staffs (id, name, age, email, phoneNo, role, commission) values (20, 'Trude Grgic', 58, 'tgrgicj@gmail.com', '01996815513', 'Veterinarian',0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (1, 'Briana Thomason', 33, 'bthomason0@gmail.com', '01151125639', 'Veterinarian', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (2, 'Horacio Cosson', 34, 'hcosson1@gmail.com', '01956173275', 'Vet Technician', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (3, 'Bryna Phelipeau', 36, 'bphelipeau2@gmail.com', '01020104351', 'Veterinarian', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (4, 'Mead Spare', 21, 'mspare3@gmail.com', '01303938306', 'Care Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (5, 'Wolfy Bastian', 59, 'wbastian4@gmail.com', '01235091032', 'Vet Technician', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (6, 'Thorndike Gillingwater', 30, 'tgillingwater5@gmail.com', '01178967515', 'Vet Technician', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (7, 'Paule Hindrich', 23, 'phindrich6@gmail.com', '01198673233', 'Vet Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (8, 'Hulda Slamaker', 24, 'hslamaker7@gmail.com', '01397484928', 'Vet Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (9, 'Margaretta Woodsford', 24, 'mwoodsford8@gmail.com', '01090600898', 'Veterinarian', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (10, 'Foster Zimek', 55, 'fzimek9@gmail.com', '01884277922', 'Veterinarian', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (11, 'Robina Steenson', 39, 'rsteensona@gmail.com', '01968345080', 'Vet Technician', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (12, 'Sallie Showalter', 24, 'sshowalterb@gmail.com', '01177940143', 'Vet Technician', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (13, 'Arv Lemmon', 56, 'alemmonc@gmail.com', '01025917511', 'Care Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (14, 'Thornton Schapero', 21, 'tschaperod@gmail.com', '01864408741', 'Care Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (15, 'Humphrey Scotland', 59, 'hscotlande@gmail.com', '01548017296', 'Veterinarian', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (16, 'Forster Beckingham', 46, 'fbeckinghamf@gmail.com', '01553603684', 'Vet Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (17, 'Daune McTurley', 60, 'dmcturleyg@gmail.com', '01036850467', 'Vet Technician', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (18, 'Wilmette Clemmow', 51, 'wclemmowh@gmail.com', '01809028739', 'Vet Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (19, 'Tawnya Baynom', 28, 'tbaynomi@gmail.com', '01401202809', 'Vet Assistant', 0);
+insert into Staffs (id, name, age, email, phoneNo, role, commission) values (20, 'Trude Grgic', 58, 'tgrgicj@gmail.com', '01996815513', 'Veterinarian', 0);
 
 -- Insert statements for Appointments table (70)
 insert into Appointments (id, createdAt, bookingDateTime, petId, roomId, staffId) values (1, TO_DATE('2022-10-26 11:41:23', 'yyyy-mm-dd hh24:mi:ss'), TO_DATE('2022-10-28 11:38:35', 'yyyy-mm-dd hh24:mi:ss'), 23, 'B101', 18);
