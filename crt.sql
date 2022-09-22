@@ -14,22 +14,22 @@ DROP TABLE Staffs;
 -- Customers Table
 CREATE TABLE Customers (
     ic VARCHAR(12) NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(20) NOT NULL,
     phoneNo VARCHAR(11) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    area VARCHAR(50) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    area VARCHAR(20) NOT NULL,
     PRIMARY KEY (ic)
 );
 
 -- Pets Table
 CREATE TABLE Pets (
     id NUMBER NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(20) NOT NULL,
     age NUMBER(3) NOT NULL,
     gender VARCHAR(1) NOT NULL,
-    breed VARCHAR(50) NOT NULL,
-    color VARCHAR(50) NOT NULL,
-    type VARCHAR(50) NOT NULL,
+    breed VARCHAR(20) NOT NULL,
+    color VARCHAR(20) NOT NULL,
+    type VARCHAR(10) NOT NULL,
     ownerIc VARCHAR(12) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (ownerIc) REFERENCES Customers (ic)
@@ -38,7 +38,7 @@ CREATE TABLE Pets (
 -- Rooms Table
 CREATE TABLE Rooms (
     id VARCHAR(4) NOT NULL,
-    location VARCHAR(50) NOT NULL,
+    location VARCHAR(20) NOT NULL,
     status VARCHAR(10) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -46,11 +46,11 @@ CREATE TABLE Rooms (
 -- Staffs Table
 CREATE TABLE Staffs (
     id NUMBER NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(30) NOT NULL,
     age NUMBER(3) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    email VARCHAR(30) NOT NULL,
     phoneNo VARCHAR(11) NOT NULL,
-    role VARCHAR(50) NOT NULL,
+    role VARCHAR(20) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -71,9 +71,9 @@ CREATE TABLE Appointments (
 -- Suppliers Table
 CREATE TABLE Suppliers (
     id NUMBER NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(20) NOT NULL,
     phoneNo VARCHAR(11) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    email VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -107,7 +107,7 @@ CREATE TABLE TreatmentInvoice (
 -- Medications Table
 CREATE TABLE Medications (
     supplierId NUMBER NOT NULL,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(30) NOT NULL,
     description VARCHAR(100) NOT NULL,
     stockQuantity NUMBER NOT NULL,
     MSRP NUMBER(10, 2) NOT NULL,
