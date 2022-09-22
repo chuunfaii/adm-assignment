@@ -1,6 +1,6 @@
-SELECT * FROM (SELECT M.supplierId Medication_ID,M.name Medication_Name,M.price,sum(MI.quantity)Total_Quantity,sum(M.price * MI.quantity)Total_Profit
+SELECT * FROM (SELECT M.supplierId MEDICATION_ID,M.name MEDICATION_NAME,TO_CHAR(M.price,'99,999.99') PRICE,SUM(MI.quantity)TOTAL_QUANTITY,TO_CHAR(SUM(M.price * MI.quantity),'999,999.99') TOTAL_PROFITS
 FROM Medications M, MedicationInvoice MI
 WHERE M.supplierId = MI.medicationId
 GROUP BY M.supplierId, M.name, M.price
-ORDER BY Total_Profit DESC)
+ORDER BY TOTAL_PROFITS DESC)
 WHERE rownum <= 5;
