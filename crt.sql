@@ -1,5 +1,6 @@
 -- Drop all tables
 DROP TABLE TreatmentInvoice;
+DROP TABLE TreatmentPriceAudit;
 DROP TABLE Treatments;
 DROP TABLE MedicationInvoice;
 DROP TABLE Medications;
@@ -51,6 +52,7 @@ CREATE TABLE Staffs (
     email VARCHAR(30) NOT NULL,
     phoneNo VARCHAR(11) NOT NULL,
     role VARCHAR(20) NOT NULL,
+    commission NUMBER NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -93,6 +95,17 @@ CREATE TABLE Treatments (
     price NUMBER(10, 2) NOT NULL,
     description VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
+);
+
+-- TreatmentPriceAudit Table
+CREATE TABLE TreatmentPriceAudit (
+    id NUMBER NOT NULL,
+    treatmentId NUMBER NOT NULL,
+    oldPrice NUMBER(10,2) NOT NULL,
+    newPrice NUMBER(10,2) NOT NULL,
+    dateTimeChanged DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (treatmentId) REFERENCES Treatments (id)
 );
 
 -- TreatmentInvoice Table
