@@ -9,6 +9,7 @@ DROP TABLE Suppliers;
 DROP TABLE Invoices;
 DROP TABLE Appointments;
 DROP TABLE Pets;
+DROP TABLE CustomersLog;
 DROP TABLE Customers;
 DROP TABLE Rooms;
 DROP TABLE Staffs;
@@ -21,6 +22,22 @@ CREATE TABLE Customers (
     email VARCHAR(30) NOT NULL,
     area VARCHAR(20) NOT NULL,
     PRIMARY KEY (ic)
+);
+
+CREATE TABLE CustomersLog(
+    id NUMBER NOT NULL,
+    customersIc VARCHAR(12) NOT NULL,
+    newName VARCHAR(20) NOT NULL,
+    oldName VARCHAR(20) NOT NULL,
+    newPhoneNo VARCHAR(11) NOT NULL,
+    oldPhoneNo VARCHAR(11) NOT NULL,
+    newEmail VARCHAR(30) NOT NULL,
+    oldEmail VARCHAR(30) NOT NULL,
+    newArea VARCHAR(20) NOT NULL,
+    oldArea VARCHAR(20) NOT NULL,
+    dateTimeChanged DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (customersIc) REFERENCES Customers(ic)
 );
 
 -- Pets Table
