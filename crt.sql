@@ -118,17 +118,6 @@ CREATE TABLE TreatmentInvoice (
     FOREIGN KEY (treatmentId) REFERENCES Treatments (id)
 );
 
--- MedicationPriceAudit Table
-CREATE TABLE MedicationPriceAudit (
-    id NUMBER NOT NULL,
-    medicationId NUMBER NOT NULL,
-    oldPrice NUMBER(10, 2) NOT NULL,
-    newPrice NUMBER(10, 2) NOT NULL,
-    datetimeChanged DATE NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
-);
-
 -- Medications Table
 CREATE TABLE Medications (
     supplierId NUMBER NOT NULL,
@@ -139,6 +128,17 @@ CREATE TABLE Medications (
     price NUMBER(10, 2) NOT NULL,
     PRIMARY KEY (supplierId),
     FOREIGN KEY (supplierId) REFERENCES Suppliers (id)
+);
+
+-- MedicationPriceAudit Table
+CREATE TABLE MedicationPriceAudit (
+    id NUMBER NOT NULL,
+    medicationId NUMBER NOT NULL,
+    oldPrice NUMBER(10, 2) NOT NULL,
+    newPrice NUMBER(10, 2) NOT NULL,
+    datetimeChanged DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
 );
 
 -- MedicationInvoice Table
