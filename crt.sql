@@ -1,6 +1,7 @@
 -- Drop all tables
 DROP TABLE TreatmentInvoice;
 DROP TABLE Treatments;
+DROP TABLE MedicationPriceAudit;
 DROP TABLE MedicationInvoice;
 DROP TABLE Medications;
 DROP TABLE Suppliers;
@@ -102,6 +103,17 @@ CREATE TABLE TreatmentInvoice (
     PRIMARY KEY (invoiceId, treatmentId),
     FOREIGN KEY (invoiceId) REFERENCES Invoices (appointmentId),
     FOREIGN KEY (treatmentId) REFERENCES Treatments (id)
+);
+
+-- MedicationPriceAudit Table
+CREATE TABLE MedicationPriceAudit (
+    id NUMBER NOT NULL,
+    medicationId NUMBER NOT NULL,
+    oldPrice NUMBER(10, 2) NOT NULL,
+    newPrice NUMBER(10, 2) NOT NULL,
+    datetimeChanged DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
 );
 
 -- Medications Table
