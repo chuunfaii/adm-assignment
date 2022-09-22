@@ -30,7 +30,7 @@ BEGIN
     CASE
         WHEN (TRIM(staffName) IS NULL) THEN
             RAISE EX_NULL_STAFF_NAME;
-        WHEN (staffAge <= 0) THEN
+        WHEN (TRIM(staffAge) is NULL OR staffAge <= 0) THEN
             RAISE EX_NULL_STAFF_AGE;
         WHEN (TRIM(staffEmail) IS NULL) THEN
             RAISE EX_NULL_STAFF_EMAIL;
@@ -38,7 +38,7 @@ BEGIN
             RAISE EX_NULL_STAFF_PHONENO;
         WHEN (TRIM(staffRole) IS NULL) THEN
             RAISE EX_NULL_STAFF_ROLE;
-        WHEN (staffCommission < 0) THEN
+        WHEN (TRIM(staffCommission) IS NULL OR staffCommission < 0) THEN
             RAISE EX_NULL_STAFF_COMMISSION;
         ELSE
             open c1;
@@ -75,7 +75,7 @@ BEGIN
             SELECT (MAX(id)) into v_lastID FROM Staffs;
 
             INSERT INTO Staffs
-            VALUES ((v_lastID + 1), TRIM(staffName), staffAge, TRIM(staffEmail), TRIM(staffPhoneNo), TRIM(staffRole), staffCommission);
+            VALUES ((v_lastID + 1), TRIM(staffName), TRIM(staffAge), TRIM(staffEmail), TRIM(staffPhoneNo), TRIM(staffRole), TRIM(staffCommission));
             DBMS_OUTPUT.PUT_LINE('-----New Staff has added successfully.-----');
     END CASE;
 
