@@ -136,13 +136,14 @@ CREATE TABLE TreatmentInvoice (
 
 -- Medications Table
 CREATE TABLE Medications (
-    supplierId NUMBER NOT NULL,
+    id NUMBER NOT NULL,
     name VARCHAR(30) NOT NULL,
     description VARCHAR(100) NOT NULL,
     stockQuantity NUMBER NOT NULL,
     MSRP NUMBER(10, 2) NOT NULL,
     price NUMBER(10, 2) NOT NULL,
-    PRIMARY KEY (supplierId),
+    supplierId NUMBER NOT NULL,
+    PRIMARY KEY (id),
     FOREIGN KEY (supplierId) REFERENCES Suppliers (id)
 );
 
@@ -154,7 +155,7 @@ CREATE TABLE MedicationPriceAudit (
     newPrice NUMBER(10, 2) NOT NULL,
     datetimeChanged DATE NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
+    FOREIGN KEY (medicationId) REFERENCES Medications (id)
 );
 
 -- MedicationInvoice Table
@@ -164,5 +165,5 @@ CREATE TABLE MedicationInvoice (
     quantity NUMBER NOT NULL,
     PRIMARY KEY (invoiceId, medicationId),
     FOREIGN KEY (invoiceId) REFERENCES Invoices (appointmentId),
-    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
+    FOREIGN KEY (medicationId) REFERENCES Medications (id)
 );
