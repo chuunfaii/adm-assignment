@@ -387,16 +387,16 @@ insert into Suppliers (id, name, phoneNo, email) values (9, 'Zoomlounge', '01704
 insert into Suppliers (id, name, phoneNo, email) values (10, 'Dynabox', '0184699629', 'fhaughin9@gmail.com');
 
 -- Insert statements for Medications table (10)
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (1, 'Painkillers', 'Relieve different types of pain', 60, 100, 2.5);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (2, 'Antibiotics', 'Treat some types of bacterial infection', 50, 375, 8.0);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (3, 'Chemotherapeutics', 'Treat tumors and cancer', 72, 380, 8.1);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (4, 'Antiparasitics', 'Prevent, repel or kill internal or external parasites', 82, 195, 4.4);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (5, 'Anti-inflammatories', 'Reduce swelling, inflammation, pain and lameness', 77, 135, 3.2);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (6, 'Corticosteroids', 'Reduce inflammation and suppress the immune system', 98, 195, 4.4);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (7, 'Famotidine', 'Treat a variety of gastrointestinal conditions', 98, 280, 6.1);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (8, 'Methocarbamol', 'Relieve the discomfort caused by acute, painful muscle or bone conditions', 91, 265, 5.8);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (9, 'Fluconazole', 'Treat fungal infections, especially for infections in the brain or spinal cord', 91, 155, 3.6);
-insert into Medications (supplierId, name, description, stockQuantity, MSRP, price) values (10, 'Steroid', 'Reduce allergic and anaphylactic reactions', 73, 115, 2.8);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (1, 'Painkillers', 'Relieve different types of pain', 60, 100, 2.5, 1);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (2, 'Antibiotics', 'Treat some types of bacterial infection', 50, 375, 8.0, 2);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (3, 'Chemotherapeutics', 'Treat tumors and cancer', 72, 380, 8.1, 3);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (4, 'Antiparasitics', 'Prevent, repel or kill internal or external parasites', 82, 195, 4.4, 4);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (5, 'Anti-inflammatories', 'Reduce swelling, inflammation, pain and lameness', 77, 135, 3.2, 5);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (6, 'Corticosteroids', 'Reduce inflammation and suppress the immune system', 98, 195, 4.4, 6);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (7, 'Famotidine', 'Treat a variety of gastrointestinal conditions', 98, 280, 6.1, 7);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (8, 'Methocarbamol', 'Relieve the discomfort caused by acute, painful muscle or bone conditions', 91, 265, 5.8, 8);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (9, 'Fluconazole', 'Treat fungal infections, especially for infections in the brain or spinal cord', 91, 155, 3.6, 9);
+insert into Medications (id, name, description, stockQuantity, MSRP, price, supplierId) values (10, 'Steroid', 'Reduce allergic and anaphylactic reactions', 73, 115, 2.8, 10);
 
 -- Insert statements for MedicationInvoice table (100)
 insert into MedicationInvoice (invoiceId, medicationId, quantity) values (1, 4, 7);
