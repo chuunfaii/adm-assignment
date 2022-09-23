@@ -156,7 +156,7 @@ CREATE TABLE MedicationPriceAudit (
     newPrice NUMBER(10, 2) NOT NULL,
     datetimeChanged DATE NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
+    FOREIGN KEY (medicationId) REFERENCES Medications (id)
 );
 
 -- MedicationInvoice Table
@@ -166,5 +166,5 @@ CREATE TABLE MedicationInvoice (
     quantity NUMBER NOT NULL,
     PRIMARY KEY (invoiceId, medicationId),
     FOREIGN KEY (invoiceId) REFERENCES Invoices (appointmentId),
-    FOREIGN KEY (medicationId) REFERENCES Medications (supplierId)
+    FOREIGN KEY (medicationId) REFERENCES Medications (id)
 );
