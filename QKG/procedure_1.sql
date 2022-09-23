@@ -1,7 +1,7 @@
 CREATE OR REPLACE PROCEDURE proc_add_new_staff
 (staffName IN Staffs.name%TYPE, staffAge IN Staffs.age%TYPE,
 staffEmail IN Staffs.email%TYPE, staffPhoneNo IN Staffs.phoneNo%TYPE,
-staffRole IN Staffs.role%TYPE, staffCommission IN Staffs.commission%TYPE) IS
+staffRole IN Staffs.role%TYPE) IS
 
     v_lastID Staffs.id%TYPE;
     v_staffName Staffs.name%TYPE;
@@ -21,10 +21,9 @@ staffRole IN Staffs.role%TYPE, staffCommission IN Staffs.commission%TYPE) IS
     EX_NULL_STAFF_EMAIL EXCEPTION;
     EX_NULL_STAFF_PHONENO EXCEPTION;
     EX_NULL_STAFF_ROLE EXCEPTION;
-    EX_NULL_STAFF_COMMISSION EXCEPTION;
 
     CURSOR c1 IS
-    SELECT name,age,email,phoneNo,role,commission FROM Staffs;
+    SELECT name,age,email,phoneNo,role FROM Staffs;
 
 BEGIN
     CASE
@@ -38,13 +37,11 @@ BEGIN
             RAISE EX_NULL_STAFF_PHONENO;
         WHEN (TRIM(staffRole) IS NULL) THEN
             RAISE EX_NULL_STAFF_ROLE;
-        WHEN (TRIM(staffCommission) IS NULL OR staffCommission < 0) THEN
-            RAISE EX_NULL_STAFF_COMMISSION;
         ELSE
             open c1;
             LOOP
                 FETCH c1 
-                INTO v_staffName, v_staffAge, v_staffEmail, v_staffPhoneNo, v_staffRole, v_staffCommission;
+                INTO v_staffName, v_staffAge, v_staffEmail, v_staffPhoneNo, v_staffRole;
                 EXIT WHEN c1%NOTFOUND;
 
                 IF staffName LIKE v_staffName THEN
@@ -74,8 +71,10 @@ BEGIN
 
             SELECT (MAX(id)) into v_lastID FROM Staffs;
 
+            v_staffCommission := 0;
+
             INSERT INTO Staffs
-            VALUES ((v_lastID + 1), TRIM(staffName), TRIM(staffAge), TRIM(staffEmail), TRIM(staffPhoneNo), TRIM(staffRole), TRIM(staffCommission));
+            VALUES ((v_lastID + 1), TRIM(staffName), TRIM(staffAge), TRIM(staffEmail), TRIM(staffPhoneNo), TRIM(staffRole), v_staffCommission);
             DBMS_OUTPUT.PUT_LINE('-----New Staff has added successfully.-----');
     END CASE;
 
@@ -90,8 +89,6 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Phone Number.-----');
     WHEN EX_NULL_STAFF_ROLE THEN
         DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Role.-----');
-    WHEN EX_NULL_STAFF_COMMISSION THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Commission.-----');
     WHEN EX_STAFF_EXIST THEN
         DBMS_OUTPUT.PUT_LINE('-----This Staff Already Existed.-----');
 END;
