@@ -66,7 +66,6 @@ CREATE TABLE Rooms (
 CREATE TABLE Staffs (
     id NUMBER NOT NULL,
     name VARCHAR(30) NOT NULL,
-    age NUMBER(3) NOT NULL,
     email VARCHAR(30) NOT NULL,
     phoneNo VARCHAR(11) NOT NULL,
     role VARCHAR(20) NOT NULL,
