@@ -1,11 +1,9 @@
 CREATE OR REPLACE PROCEDURE proc_add_new_staff
-(staffName IN Staffs.name%TYPE, staffAge IN Staffs.age%TYPE,
-staffEmail IN Staffs.email%TYPE, staffPhoneNo IN Staffs.phoneNo%TYPE,
-staffRole IN Staffs.role%TYPE, staffCommission IN Staffs.commission%TYPE) IS
+(staffName IN Staffs.name%TYPE, staffEmail IN Staffs.email%TYPE, 
+staffPhoneNo IN Staffs.phoneNo%TYPE, staffRole IN Staffs.role%TYPE) IS
 
     v_lastID Staffs.id%TYPE;
     v_staffName Staffs.name%TYPE;
-    v_staffAge Staffs.age%TYPE;
     v_staffEmail Staffs.email%TYPE;
     v_staffPhoneNo Staffs.phoneNo%TYPE;
     v_staffRole Staffs.role%TYPE;
@@ -17,34 +15,28 @@ staffRole IN Staffs.role%TYPE, staffCommission IN Staffs.commission%TYPE) IS
 
     EX_STAFF_EXIST EXCEPTION;
     EX_NULL_STAFF_NAME EXCEPTION;
-    EX_NULL_STAFF_AGE EXCEPTION;
     EX_NULL_STAFF_EMAIL EXCEPTION;
     EX_NULL_STAFF_PHONENO EXCEPTION;
     EX_NULL_STAFF_ROLE EXCEPTION;
-    EX_NULL_STAFF_COMMISSION EXCEPTION;
 
     CURSOR c1 IS
-    SELECT name,age,email,phoneNo,role,commission FROM Staffs;
+    SELECT name,email,phoneNo,role FROM Staffs;
 
 BEGIN
     CASE
         WHEN (TRIM(staffName) IS NULL) THEN
             RAISE EX_NULL_STAFF_NAME;
-        WHEN (TRIM(staffAge) is NULL OR staffAge <= 0) THEN
-            RAISE EX_NULL_STAFF_AGE;
         WHEN (TRIM(staffEmail) IS NULL) THEN
             RAISE EX_NULL_STAFF_EMAIL;
         WHEN (TRIM(staffPhoneNo) IS NULL) THEN
             RAISE EX_NULL_STAFF_PHONENO;
         WHEN (TRIM(staffRole) IS NULL) THEN
             RAISE EX_NULL_STAFF_ROLE;
-        WHEN (TRIM(staffCommission) IS NULL OR staffCommission < 0) THEN
-            RAISE EX_NULL_STAFF_COMMISSION;
         ELSE
             open c1;
             LOOP
                 FETCH c1 
-                INTO v_staffName, v_staffAge, v_staffEmail, v_staffPhoneNo, v_staffRole, v_staffCommission;
+                INTO v_staffName, v_staffEmail, v_staffPhoneNo, v_staffRole;
                 EXIT WHEN c1%NOTFOUND;
 
                 IF staffName LIKE v_staffName THEN
@@ -74,26 +66,36 @@ BEGIN
 
             SELECT (MAX(id)) into v_lastID FROM Staffs;
 
+            v_staffCommission := 0;
+
             INSERT INTO Staffs
-            VALUES ((v_lastID + 1), TRIM(staffName), TRIM(staffAge), TRIM(staffEmail), TRIM(staffPhoneNo), TRIM(staffRole), TRIM(staffCommission));
-            DBMS_OUTPUT.PUT_LINE('-----New Staff has added successfully.-----');
+            VALUES ((v_lastID + 1), TRIM(staffName), TRIM(staffEmail), TRIM(staffPhoneNo), TRIM(staffRole), v_staffCommission);
+            DBMS_OUTPUT.PUT_LINE('-----------------------------------');
+            DBMS_OUTPUT.PUT_LINE('|New Staff has added successfully.|');
+            DBMS_OUTPUT.PUT_LINE('-----------------------------------');
     END CASE;
 
 EXCEPTION
     WHEN EX_NULL_STAFF_NAME THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Name.-----');
-    WHEN EX_NULL_STAFF_AGE THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Age.-----');
+        DBMS_OUTPUT.PUT_LINE('---------------------');
+        DBMS_OUTPUT.PUT_LINE('|Invalid Staff Name.|');
+        DBMS_OUTPUT.PUT_LINE('---------------------');
     WHEN EX_NULL_STAFF_EMAIL THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Email.-----');
+        DBMS_OUTPUT.PUT_LINE('----------------------');
+        DBMS_OUTPUT.PUT_LINE('|Invalid Staff Email.|');
+        DBMS_OUTPUT.PUT_LINE('----------------------');
     WHEN EX_NULL_STAFF_PHONENO THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Phone Number.-----');
+        DBMS_OUTPUT.PUT_LINE('-----------------------------');
+        DBMS_OUTPUT.PUT_LINE('|Invalid Staff Phone Number.|');
+        DBMS_OUTPUT.PUT_LINE('-----------------------------');
     WHEN EX_NULL_STAFF_ROLE THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Role.-----');
-    WHEN EX_NULL_STAFF_COMMISSION THEN
-        DBMS_OUTPUT.PUT_LINE('-----Invalid Staff Commission.-----');
+        DBMS_OUTPUT.PUT_LINE('---------------------');
+        DBMS_OUTPUT.PUT_LINE('|Invalid Staff Role.|');
+        DBMS_OUTPUT.PUT_LINE('---------------------');
     WHEN EX_STAFF_EXIST THEN
-        DBMS_OUTPUT.PUT_LINE('-----This Staff Already Existed.-----');
+        DBMS_OUTPUT.PUT_LINE('-----------------------------');
+        DBMS_OUTPUT.PUT_LINE('|This Staff Already Existed.|');
+        DBMS_OUTPUT.PUT_LINE('-----------------------------');
 END;
 /
         
