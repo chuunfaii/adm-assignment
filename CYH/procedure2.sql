@@ -38,7 +38,7 @@ BEGIN
         IF v_custArea IS NOT NULL THEN
             UPDATE Customers SET area = v_custArea WHERE ic = v_custIc;
             DBMS_OUTPUT.PUT_LINE('------------------------------');
-            DBMS_OUTPUT.PUT_LINE('|Customer Role Has Been Updated.|');
+            DBMS_OUTPUT.PUT_LINE('|Customer Area Has Been Updated.|');
             DBMS_OUTPUT.PUT_LINE('------------------------------');
         END IF;
     END IF;
