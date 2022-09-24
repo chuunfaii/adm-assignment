@@ -18,17 +18,22 @@ BEGIN
     CASE 
         WHEN (:new.phoneNo IS NULL) THEN
             RAISE EX_INVALID_PHONE_NO;
-        WHEN (:new.phoneNo IS NULL) THEN
+        WHEN (:new.email IS NULL) THEN
             RAISE EX_INVALID_EMAIL;
-        WHEN (:new.phoneNo IS NULL) THEN
+        WHEN (:new.area IS NULL) THEN
             RAISE EX_INVALID_AREA;
         ELSE
             INSERT INTO CustomersLog 
-            VALUES (CustomerDetailLogID_Seq.nextval,:OLD.id, :OLD.price, :NEW.price, SYSDATE );
+            VALUES (CustomerDetailLogID_Seq.nextval,:OLD.ic, :NEW.phoneNo, :OLD.phoneNo , :NEW.email ,
+            :OLD.email, :NEW.area, :OLD.area , SYSDATE );
     END CASE;
 
     EXCEPTION
-        WHEN EX_INVALID_PRICE THEN
-            RAISE_APPLICATION_ERROR(-20000, 'Invalid price. Price must be more than 0.');
+        WHEN EX_INVALID_PHONE_NO THEN
+            RAISE_APPLICATION_ERROR(-20000, 'Invalid phone number.');
+        WHEN EX_INVALID_EMAIL THEN
+            RAISE_APPLICATION_ERROR(-20000, 'Invalid email.');
+        WHEN EX_INVALID_AREA THEN
+            RAISE_APPLICATION_ERROR(-20000, 'Invalid area.');
 END;
 /

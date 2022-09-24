@@ -28,7 +28,6 @@ CREATE TABLE Customers (
 CREATE TABLE CustomersLog(
     id NUMBER NOT NULL,
     customersIc VARCHAR(12) NOT NULL,
-    name VARCHAR(20) NOT NULL,
     newPhoneNo VARCHAR(11) NOT NULL,
     oldPhoneNo VARCHAR(11) NOT NULL,
     newEmail VARCHAR(30) NOT NULL,
