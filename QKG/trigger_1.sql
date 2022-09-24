@@ -1,31 +1,28 @@
-CREATE OR REPLACE TRIGGER trg_staff_commission
+DROP SEQUENCE StaffCommissionLogID_Seq;
+
+CREATE SEQUENCE StaffCommissionLogID_Seq
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE OR REPLACE TRIGGER staff_commission_log
 BEFORE UPDATE OF commission ON Staffs
-FOR EACH ROW 
+FOR EACH ROW
 
-DECLARE 
-    v_id Staffs.id%TYPE;
-    commission1 Staffs.commission%TYPE;
-    commission2 Staffs.commission%TYPE;
-    appointmentCount NUMBER;
-BEGIN
-    SELECT id INTO v_id FROM Staffs;
-    SELECT COUNT(id) INTO appointmentCount FROM Appointments WHERE Appointments.staffId = v_id;
-    
+DECLARE
+    EX_INVALID_COMMISSION EXCEPTION;
+BEGIN       
+    CASE 
+        WHEN (:new.commission IS NULL OR :new.commission < 0) THEN
+            RAISE EX_INVALID_COMMISSION;
+        ELSE
+            INSERT INTO StaffCommissionLog 
+            VALUES (StaffCommissionLogID_Seq.nextval,:OLD.id, :OLD.commission, :NEW.commission, SYSDATE);
+    END CASE;
 
-    --commission1 := 200;
-    --commission2 := 400;
-
-    IF (appointmentCount < 5) THEN
-        DBMS_OUTPUT.PUT_LINE('No Additional Commission.');
-    END IF;
-
-    IF (appointmentCount >= 5) THEN
-        DBMS_OUTPUT.PUT_LINE('Get RM200 Of Commission.');
-    END IF;
-
-    IF (appointmentCount >= 10) THEN
-        DBMS_OUTPUT.PUT_LINE('Get RM400 Of Commission.');   
-    END IF;
-
+    EXCEPTION
+        WHEN EX_INVALID_COMMISSION THEN
+            RAISE_APPLICATION_ERROR(-20000, 'Invalid Commission. Commission must be at least 0.');
 END;
 /
