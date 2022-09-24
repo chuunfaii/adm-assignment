@@ -33,7 +33,7 @@ BEGIN
     IF staffExist = 0 THEN
         RAISE NO_STAFF_FOUND; 
     ELSE
-        DBMS_OUTPUT.PUT_LINE(RPAD('.', 30, ' ') || 'STAFF ID ' || p_staffID || ' DETAIL REPORT');
+        DBMS_OUTPUT.PUT_LINE(RPAD('.', 30, ' ') || 'STAFF DETAIL REPORT');
         DBMS_OUTPUT.PUT_LINE(LPAD('=', 90, '='));
 
         OPEN staffDetail;
