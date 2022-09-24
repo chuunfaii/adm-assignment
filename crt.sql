@@ -12,6 +12,7 @@ DROP TABLE Pets;
 DROP TABLE CustomersLog;
 DROP TABLE Customers;
 DROP TABLE Rooms;
+DROP TABLE StaffCommissionLog;
 DROP TABLE Staffs;
 
 -- Customers Table
@@ -71,6 +72,17 @@ CREATE TABLE Staffs (
     role VARCHAR(20) NOT NULL,
     commission NUMBER NOT NULL,
     PRIMARY KEY (id)
+);
+
+-- StaffsCommissionLog Table
+CREATE TABLE StaffCommissionLog (
+    id NUMBER NOT NULL,
+    staffID NUMBER NOT NULL,
+    oldCommission NUMBER(10,2) NOT NULL,
+    newCommission NUMBER(10,2) NOT NULL,
+    logDate DATE NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(staffID) REFERENCES Staffs (id)
 );
 
 -- Appointments Table
