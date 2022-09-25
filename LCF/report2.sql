@@ -3,9 +3,13 @@ SET PAGESIZE 200
 SET LINESIZE 200
 
 CREATE OR REPLACE PROCEDURE RPT_DETAIL_INVOICE (v_invoiceId IN NUMBER) IS
+    v_minInvoiceId NUMBER;
+    v_maxInvoiceId NUMBER;
     v_subtotalMedicationInvoice NUMBER;
     v_totalMedicationInvoice NUMBER := 0.00;
     v_totalTreatmentInvoice NUMBER := 0.00;
+
+    EX_INVOICE_NOT_EXIST EXCEPTION;
 
     CURSOR Invoice_Details IS
         SELECT
@@ -41,9 +45,13 @@ CREATE OR REPLACE PROCEDURE RPT_DETAIL_INVOICE (v_invoiceId IN NUMBER) IS
     medicationInvoice Medication_Invoice_Details%ROWTYPE;
     treatmentInvoice Treatment_Invoice_Details%ROWTYPE;
 BEGIN
--- invoice id, customer name, customer ic, pet id, pet breed, pet type, invoice total price, appointment date time, invoice paid date time, staff id, staff name
--- ALL medication name, quantity, price, subtotal
--- ALL treatment name, price, subtotal
+    SELECT MIN(appointmentId) INTO v_minInvoiceId FROM Invoices;
+    SELECT MAX(appointmentId) INTO v_maxInvoiceId FROM Invoices;
+
+    IF (v_invoiceId < v_minInvoiceId OR v_invoiceId > v_maxInvoiceId) THEN
+        RAISE EX_INVOICE_NOT_EXIST;
+    END IF;
+
     DBMS_OUTPUT.PUT_LINE(RPAD(' ', 103, ' ') || RPAD('Date', 6, ' ') || ': ' || TO_CHAR(SYSDATE, 'DD-MM-YYYY'));
 	DBMS_OUTPUT.PUT_LINE(RPAD(' ', 103, ' ') || RPAD('Time', 6, ' ') || ': ' || TO_CHAR(SYSDATE, 'HH24:MI:SS'));
 	DBMS_OUTPUT.PUT_LINE(RPAD(' ', 103, ' ') || RPAD('Day', 6, ' ') || ': ' || TO_CHAR(SYSDATE, 'DAY'));
@@ -105,5 +113,9 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('---' || RPAD('-', 26, '-') || '---' || RPAD('-', 30, '-') || RPAD('-', 19, '-') || '---' || RPAD('-', 35, '-') || '---');
     DBMS_OUTPUT.PUT_LINE(' | ' || RPAD(' ', 26, ' ') || '   ' || RPAD(' ', 30, ' ') || RPAD(' ', 19, ' ') || '   ' || RPAD(' ', 35, ' ') || ' | ');
     DBMS_OUTPUT.PUT_LINE(RPAD('=', 53, '=') || ' END OF REPORT ' || RPAD('=', 54, '='));
+
+    EXCEPTION
+        WHEN EX_INVOICE_NOT_EXIST THEN
+            DBMS_OUTPUT.PUT_LINE(chr(10) || '[!] Invoice does not exist. Please enter an invoice that already exists.');
 END;
 /
