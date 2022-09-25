@@ -13,6 +13,7 @@ DROP TABLE CustomersLog;
 DROP TABLE Customers;
 DROP TABLE Rooms;
 DROP TABLE StaffCommissionLog;
+DROP TABLE StaffDetailLog;
 DROP TABLE Staffs;
 
 -- Customers Table
@@ -70,6 +71,21 @@ CREATE TABLE Staffs (
     role VARCHAR(20) NOT NULL,
     commission NUMBER NOT NULL,
     PRIMARY KEY (id)
+);
+
+-- StaffsDetailLog
+CREATE TABLE StaffDetailLog(
+    id NUMBER NOT NULL,
+    staffID NUMBER NOT NULL,
+    newEmail VARCHAR(30) NOT NULL,
+    oldEmail VARCHAR(30) NOT NULL,
+    newPhoneNo VARCHAR(30) NOT NULL,
+    oldPhoneNo VARCHAR(30) NOT NULL,
+    newRole VARCHAR(20) NOT NULL,
+    oldRole VARCHAR(20) NOT NULL,
+    dateTimeChanged DATE NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (staffID) REFERENCES Staffs(id)
 );
 
 -- StaffsCommissionLog Table
