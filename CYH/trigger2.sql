@@ -7,7 +7,7 @@ INCREMENT BY 1
 NOCACHE;
 
 CREATE OR REPLACE TRIGGER staff_detail_log
-after UPDATE OF email,phoneNo,role ON Staffs
+BEFORE UPDATE OF email,phoneNo,role ON Staffs
 FOR EACH ROW
 
 DECLARE
