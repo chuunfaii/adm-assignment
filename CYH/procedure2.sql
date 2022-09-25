@@ -1,13 +1,6 @@
 CREATE OR REPLACE PROCEDURE procEditCustomer
 (v_custIc IN Customers.ic%TYPE, v_custPhoneNo IN Customers.phoneNo%TYPE, v_custEmail IN Customers.email%TYPE,
 v_custArea IN Customers.area%TYPE) IS
-/*
-    v_custIc Customers.ic%TYPE;
-    v_custName Customers.name%TYPE;
-    v_custPhoneNo Customers.phoneNo%TYPE;
-    v_custEmail Customers.email%TYPE;
-    v_custArea Customers.area%TYPE;
-*/
     EX_CUST_ID EXCEPTION;
 
     CURSOR c2 IS
@@ -20,7 +13,7 @@ BEGIN
     FETCH c2 INTO sCsr;
     IF c2%NOTFOUND THEN
         RAISE EX_CUST_ID;
-    ELSE 
+    ELSE
         IF v_custPhoneNo IS NOT NULL THEN
             UPDATE Customers SET phoneNo = v_custPhoneNo WHERE ic = v_custIc;
             DBMS_OUTPUT.PUT_LINE('-------------------------------');
