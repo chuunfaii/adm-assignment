@@ -146,7 +146,7 @@ CREATE TABLE TreatmentPriceAudit (
     treatmentId NUMBER NOT NULL,
     oldPrice NUMBER(10,2) NOT NULL,
     newPrice NUMBER(10,2) NOT NULL,
-    dateTimeChanged DATE NOT NULL,
+    auditDate DATE NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (treatmentId) REFERENCES Treatments (id)
 );
