@@ -39,5 +39,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('---' || RPAD('-', 12, '-') || '---' || RPAD('-', 23, '-') || '---' || RPAD('-', 15, '-') || '---' || RPAD('-', 15, '-') || '---' || RPAD('-', 23, '-') || '---');
     DBMS_OUTPUT.PUT_LINE(' | ' || LPAD('Total Price', 56, ' ') || ' : ' || LPAD(TO_CHAR(v_invoiceTotalPrice, '999,999.99'), 15, ' ') || LPAD(' ', 26, ' ') || ' | ');
     DBMS_OUTPUT.PUT_LINE('---' || RPAD('-', 12, '-') || '---' || RPAD('-', 23, '-') || '---' || RPAD('-', 15, '-') || '---' || RPAD('-', 15, '-') || '---' || RPAD('-', 23, '-') || '---');
+    DBMS_OUTPUT.PUT_LINE(' | ' || LPAD(' ', 56, ' ') || '   ' || LPAD(' ', 15, ' ') || LPAD(' ', 26, ' ') || ' | ');
+    DBMS_OUTPUT.PUT_LINE(RPAD('=', 45, '=') || ' END OF REPORT ' || RPAD('=', 46, '='));
 END;
 /
